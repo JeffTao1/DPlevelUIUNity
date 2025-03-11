@@ -9,5 +9,24 @@ public class SceneStart : MonoBehaviour
     public void startbuttom()
     {
         SceneManager.LoadScene(1);
+    
+        var data = new Pressing()
+        {
+            target = name,
+            wherePressed = transform.position,
+            whereMouse = Input.mousePosition
+
+
+        };
+        TelemetryLogger.Log(this, "Press", data);
+    }
+
+    
+    [System.Serializable]
+    public struct Pressing
+    {
+        public string target;
+        public Vector3 wherePressed;
+        public Vector3 whereMouse;
     }
 }

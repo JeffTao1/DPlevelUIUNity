@@ -16,10 +16,15 @@ public class move : MonoBehaviour
     {
 
     }
-
+    Vector3 _lastLogPosition;
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(_lastLogPosition,transform.position)>1f)
+        {
+            TelemetryLogger.Log(this, "Move", transform.position);
+            _lastLogPosition = transform.position;
+        }
         gowherex = Input.GetAxis("Horizontal");
         gowherey = Input.GetAxis("Vertical");
 
